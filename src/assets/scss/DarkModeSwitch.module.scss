@@ -1,0 +1,29 @@
+@import "../scss/variable.scss";
+
+.dark_mode_switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    opacity: 0.9;
+    background-color: #0a0a0a;
+    border: 1px solid var(--border-color);
+    svg {
+        width: 14px;
+        height: 14px;
+        path {
+            fill: $white;
+        }
+    }
+    &[data="true"] {
+        background-color: $white;
+        border: 1px solid var(--border-color);
+        svg {
+            path {
+                fill: #0a0a0a;
+            }
+        }
+    }
+}

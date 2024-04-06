@@ -1,0 +1,33 @@
+@import "../scss/variable.scss";
+
+.earning_wrapper {
+    .card_body {
+        background-color: #ef5350;
+    }
+    .card_footer {
+        padding: 20px 16px;
+        background-color: #cc4744;
+        .title {
+            font-size: 0.875em;
+            font-weight: 600;
+            color: $white;
+        }
+        .counter {
+            font-size: 1rem;
+            font-weight: 400;
+            color: $white;
+        }
+    }
+}
+
+body[data-theme="dark"] {
+    .earning_wrapper {
+        .card_body,
+        .card_footer {
+            background-color: var(--bg-content) !important;
+        }
+        .card_footer {
+            border-top: 1px solid var(--border-color) !important;
+        }
+    }
+}

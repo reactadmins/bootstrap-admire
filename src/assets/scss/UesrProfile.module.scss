@@ -1,0 +1,28 @@
+@import "../scss/variable.scss";
+.user_menu {
+    padding: 8px;
+    position: relative;
+    background-color: var(--bg-content);
+    .menu {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--hedging-text-color) !important;
+        .count {
+            border-radius: 30px;
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
+            color: #fff;
+            line-height: 20px;
+            text-align: center;
+        }
+    }
+}
+body[data-theme="dark"] {
+    .user_menu {
+        border: 1px solid var(--border-color);
+    }
+}

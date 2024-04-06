@@ -1,0 +1,27 @@
+.layout {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .content {
+        float: right;
+        transition: width 0.3s ease;
+    }
+}
+body {
+    &[data-theme-direction="rtl"] {
+        direction: rtl;
+        .layout {
+            .content {
+                float: left !important;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .layout {
+        .content {
+            width: 100% !important;
+        }
+    }
+}

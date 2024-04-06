@@ -1,0 +1,91 @@
+.stats {
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-content);
+    ul {
+        border-bottom: 1px solid var(--border-color);
+        li {
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.42857;
+            padding: 10px 15px;
+            color: #b5bcc2;
+            cursor: pointer;
+            border-left: 1px solid transparent;
+            border-right: 1px solid transparent;
+            &.active {
+                color: var(--hedging-text-color);
+                background-color: var(--bg-content);
+                border-color: var(--border-color) !important;
+                cursor: default;
+                overflow: hidden;
+            }
+            &:first-child {
+                border-left-color: transparent !important;
+            }
+        }
+    }
+    .table_wrapper {
+        padding: 16px;
+        table {
+            thead {
+                tr {
+                    th {
+                        border: none;
+                        border-bottom: 1px solid var(--border-color);
+                        color: var(--content-text-color);
+                        font-size: 12px;
+                        font-weight: 400;
+                        padding: 0.75em 1.25em;
+                        text-transform: uppercase;
+                        background-color: var(--bg-content);
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        border-color: var(--border-color);
+                        background-color: var(--bg-content);
+                        span {
+                            color: var(--hedging-text-color);
+                        }
+                    }
+                    &:last-child {
+                        td {
+                            border-bottom: 0px;
+                        }
+                    }
+                }
+                .user_img {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    a {
+                        img {
+                            max-width: 45px;
+                        }
+                    }
+                    span {
+                        color: var(--hedging-text-color);
+                        font-size: 14px;
+                        text-transform: capitalize;
+                        font-weight: 600;
+                    }
+                }
+                .user-count {
+                    color: var(--hedging-text-color);
+                    font-size: 14px;
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .stats {
+        .table_wrapper {
+            overflow: scroll;
+        }
+    }
+}

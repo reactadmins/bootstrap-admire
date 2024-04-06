@@ -1,0 +1,32 @@
+.timeline_container {
+    margin-top: 15px;
+    .media {
+        border-bottom: 1px solid var(--border-color);
+        .media_body {
+            h5 {
+                font-size: 14px;
+                line-height: 20px;
+                color: var(--content-text-color);
+                a {
+                    color: var(--link-color);
+                }
+            }
+            span {
+                color: var(--hedging-text-color);
+                font-size: 12px;
+                margin: 5px 0 15px 0;
+            }
+        }
+        .icon_wrapper {
+            i {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+                line-height: 30px;
+            }
+        }
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+}
