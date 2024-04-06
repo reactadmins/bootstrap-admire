@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://demo.reactadmin.com/bootstrap/admire" title="React Admin">Admire Dashboard Bootstrap version</a>
+  <a href="https://demo.reactadmin.com/bootstrap/admire" title="Admire">Admire Dashboard Bootstrap version</a>
 </h1>
 
 ![Admire dashboard template preview](https://pixarlabs-bucket.s3.us-west-1.amazonaws.com/wp-content/uploads/2024/04/06131554/Admire-Admin-Template.png)
@@ -104,7 +104,7 @@ run development server
 Within the download you'll find the following directories and files:
 
 ```
-React Admin Dashboard Bootstrap
+Admire Dashboard Bootstrap
 
 .
 ├── public
