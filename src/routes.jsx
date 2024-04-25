@@ -32,10 +32,6 @@ const routes = [
         component: Dashboard,
     },
     {
-        path: ".",
-        component: Dashboard,
-    },
-    {
         path: "/dashboard",
         component: Dashboard,
     },
@@ -76,67 +72,67 @@ const routes = [
         component: Typography,
     },
     {
-        path: "/components/tables",
+        path: "/tables",
         component: Tables,
     },
     {
-        path: "/components/basic-form",
+        path: "/forms/basic-form",
         component: BasicForm,
     },
     {
-        path: "/components/advanced-form",
+        path: "/forms/advanced-form",
         component: AdvancedForm,
     },
     {
-        path: "/components/icons",
+        path: "/icons",
         component: Icons,
     },
     {
-        path: "/components/icons/brandico",
+        path: "/icons/brandico",
         component: Brandico,
     },
     {
-        path: "/components/icons/entypo",
+        path: "/icons/entypo",
         component: Entypo,
     },
     {
-        path: "/components/icons/font-awesome",
+        path: "/icons/font-awesome",
         component: FontAwesome,
     },
     {
-        path: "/components/icons/fontelico",
+        path: "/icons/fontelico",
         component: Fontelico,
     },
     {
-        path: "/components/widgets",
+        path: "/widgets",
         component: Widgets,
     },
     {
-        path: "/components/chartjs",
+        path: "/charts/chartjs",
         component: Chartjs,
     },
     {
-        path: "/components/recharts",
+        path: "/charts/recharts",
         component: Recharts,
     },
     {
-        path: "/components/maps/google-maps",
+        path: "/maps/google-map",
         component: GoogleMaps,
     },
     {
-        path: "/components/maps/leaflet-maps",
+        path: "/maps/leaflet-maps",
         component: LeafletMaps,
     },
     {
-        route: "/auth/login",
+        route: "/login",
         component: Login,
     },
     {
-        route: "/auth/register",
+        route: "/register",
         component: Register,
     },
     {
-        route: "/auth/page404",
+        route: "/page404",
         component: Page404,
     },
     {

@@ -24,7 +24,7 @@ const Entypo = () => {
                 </div>
                 <div className="col-8">
                     <div className="d-flex gap-3 justify-content-cente align-items-center">
-                        <Link to="/components/icons">
+                        <Link to="/icons">
                             <i className="fa-regular fa-hand-point-left fs-4 text-secondary"></i>
                         </Link>
                         <div className="col-md-4">

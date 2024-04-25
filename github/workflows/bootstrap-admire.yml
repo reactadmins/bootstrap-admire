@@ -1,0 +1,130 @@
+## Bootstrap Admire Demo Deployments
+## Requirements:
+## - GH_TOKEN with write access to the repo
+## - Create a new repo for demo: {organization}/bootstrap-admire-demo
+## - For vercel deployments, create a new project for demo: {organization}/bootstrap-admire-demo
+## - Point the vercel project to the demo repo
+## - Configure domain e.g. admire-bootstrap.reactadmin.com
+##
+name: Bootstrap Admire Deployments
+
+on:
+    push:
+        branches:
+            - main # Change this to match your main branch name
+        paths:
+            - "bootstrap/admire/**"
+            - "rewriteLinks.mjs"
+
+jobs:
+    demo-deployment:
+        runs-on: ubuntu-latest
+        name: Admire Demo Deploy
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Use Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: "18" # Adjust the Node.js version if needed
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+            - name: Clean Components and Build
+              run: |
+                  ls -a
+                  cd bootstrap/admire
+                  node --experimental-modules ../../rewriteLinks.mjs /bootstrap/admire/
+                  npm i
+                  npm run build -- --base=bootstrap/admire
+                  cd docs
+                  npm i
+                  npm run build
+
+            #deploy to demo
+
+            - name: Checkout to demo repo
+              uses: actions/checkout@v3
+              with:
+                  repository: litonarefin/demo.reactadmin.com
+                  path: "demo"
+                  token: ${{ secrets.GH_TOKEN }}
+
+            - name: Copy files for bootstrap/admire to new repo folder
+              shell: bash
+              run: |
+                  ls -a
+                  mkdir -p demo/static/bootstrap/admire
+                  cp -r bootstrap/admire/dist/* demo/static/bootstrap/admire
+                  mkdir -p demo/static/bootstrap/admire/docs
+                  cp -r bootstrap/admire/docs/build/* demo/static/bootstrap/admire/docs
+
+            - name: Push changes for bootstrap/admire
+              shell: bash
+              working-directory: demo
+              run: |
+                  git config --global user.email "actions@github.com"
+                  git config --global user.name "GitHub Actions"
+                  git add .
+                  if git diff-index --quiet HEAD --; then
+                    echo "No changes to the output on this push; exiting."
+                    exit 0
+                  fi
+                  git commit -m "${{ github.event.head_commit.message }}"
+                  git pull origin main --no-rebase
+                  git push
+
+            #deploy to demo end
+
+    #deploy to public repo
+    public-deployment:
+        runs-on: ubuntu-latest
+        name: Admire Public Deploy
+        needs: demo-deployment
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Use Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: "18" # Adjust the Node.js version if needed
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+            - name: Clean Components
+              run: |
+                  ls -a
+                  cd bootstrap/admire
+                  node --experimental-modules ../../clean.mjs Switcher
+                  rm -rf src/components/Switcher/
+
+            - name: Checkout
+              uses: actions/checkout@v3
+              with:
+                  repository: reactadmins/bootstrap-admire
+                  path: "dest/bootstrap/admire"
+                  token: ${{ secrets.GH_TOKEN }}
+
+            - name: Copy files for bootstrap/admire to new repo folder
+              shell: bash
+              run: |
+                  ls -a
+                  rm -rf bootstrap/admire/docs/ 
+                  cp -r bootstrap/admire/* dest/bootstrap/admire
+
+            - name: Push changes for bootstrap/admire
+              shell: bash
+              working-directory: dest/bootstrap/admire
+              run: |
+                  git config --global user.email "actions@github.com"
+                  git config --global user.name "GitHub Actions"
+                  git add .
+                  if git diff-index --quiet HEAD --; then
+                    echo "No changes to the output on this push; exiting."
+                    exit 0
+                  fi
+                  git commit -m "${{ github.event.head_commit.message }}"
+                  git push

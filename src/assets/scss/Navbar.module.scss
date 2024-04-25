@@ -141,6 +141,18 @@ body[data-theme="dark"] {
     }
 }
 
+@media only screen and (max-width: 1024px) {
+    .navbar_wrapper {
+        .navbar_nav {
+            .header_left {
+                .sidebar_mini {
+                    display: block !important;
+                }
+            }
+        }
+    }
+}
+
 @media only screen and (max-width: 425px) {
     .navbar_wrapper {
         padding: 16px;
